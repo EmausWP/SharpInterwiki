@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpInterwiki", "SharpInterwiki\SharpInterwiki.csproj", "{FD4A7E15-240E-4BD7-A2D5-8DE984CA070B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD4A7E15-240E-4BD7-A2D5-8DE984CA070B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4A7E15-240E-4BD7-A2D5-8DE984CA070B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4A7E15-240E-4BD7-A2D5-8DE984CA070B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4A7E15-240E-4BD7-A2D5-8DE984CA070B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

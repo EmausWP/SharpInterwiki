@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SharpInterwiki" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Login" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BotConfiguration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BotConfiguration.txt</Value>
+    </Setting>
+    <Setting Name="Namespaces" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Namespaces.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

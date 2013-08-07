@@ -1,0 +1,7 @@
+﻿MinInterwikiNumber	: 2
+CommonLog			: Process_%d.txt
+ActionLog			: Actions_%d.txt
+ConflictLog			: Conflicts_%d.txt
+CommonLogLevel		: 0
+ActionLogLevel		: 0
+ConflictLogLevel	: 0
