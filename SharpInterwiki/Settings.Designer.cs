@@ -25,7 +25,7 @@ namespace SharpInterwiki {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("EmausBot")]
         public string Login {
             get {
                 return ((string)(this["Login"]));
@@ -34,7 +34,7 @@ namespace SharpInterwiki {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("GudLak30")]
         public string Password {
             get {
                 return ((string)(this["Password"]));

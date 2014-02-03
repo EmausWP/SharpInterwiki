@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Login" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">EmausBot</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">GudLak30</Value>
     </Setting>
     <Setting Name="BotConfiguration" Type="System.String" Scope="Application">
       <Value Profile="(Default)">BotConfiguration.txt</Value>

@@ -1,7 +1,10 @@
 ﻿MinInterwikiNumber	: 2
-CommonLog			: Process_%d.txt
-ActionLog			: Actions_%d.txt
-ConflictLog			: Conflicts_%d.txt
+CommonLog			: Logs\Process_%d_%type_%ns.txt
+ActionLog			: Logs\Actions_%d_%type_%ns.txt
+ConflictLog			: Logs\Conflicts_%d_%type_%ns.txt
 CommonLogLevel		: 0
 ActionLogLevel		: 0
 ConflictLogLevel	: 0
+InterwikiOrder		: en, de, fr, es, ru, it, ja, nl, pl, pt, zh, sv, fa, he, tr, hu, fi, ar, vi, no, uk, ko, ca, cs, sr, ro, id, da, simple, bg
+Portions			: 50, 30, 20, 10, 5, 1
+MoveWaitMin			: 20

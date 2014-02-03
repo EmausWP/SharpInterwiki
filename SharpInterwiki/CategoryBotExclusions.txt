@@ -1,0 +1,5 @@
+﻿en:DumbBOT
+en:AnomieBOT
+en:Hazard-Bot
+en:EarwigBot
+ru:Bot89

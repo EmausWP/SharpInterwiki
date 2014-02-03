@@ -8,9 +8,12 @@ namespace SharpInterwiki
         private readonly string _logFile;
         private readonly int _logLevel;
 
-        public InterwikiLogger (string logFile, int logLevel)
+        public InterwikiLogger (string logFile, int logLevel, InputParameters inp)
         {
-            _logFile = logFile;
+            _logFile = logFile
+                .Replace("%id", inp.ProcessId)
+                .Replace("%ns", inp.Ns.ToString())
+                .Replace("%type", inp.Type);
             _logLevel = logLevel;
             if (!Path.IsPathRooted(logFile))
             {

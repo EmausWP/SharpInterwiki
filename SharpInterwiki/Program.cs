@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using DotNetWikiBot;
 
@@ -8,68 +9,14 @@ namespace SharpInterwiki
     {
         static void Main(string[] args)
         {
-            var botconfig = "";
-            var catname = "";
-            var langcode = "";
-            var namespacestr = "";
-            var querystr = "";
-            var typestr = "";
-            var fromstr = "";
-            var tostr = "";
-            var hoursstr = "";
-            var daysstr = "";
-            var fullcheck = false;
-            foreach (var arg in args)
-            {
-                if (arg.StartsWith("-configuration:"))
-                    botconfig = arg.Substring(15).Trim();
-                if (arg.StartsWith("-fromcat:"))
-                    catname = arg.Substring(9).Trim();
-                if (arg.StartsWith("-lang:")) 
-                    langcode = arg.Substring(6).Trim();
-                if (arg.StartsWith("-ns:"))
-                    namespacestr = arg.Substring(4).Trim();
-                if (arg.StartsWith("-namespace:"))
-                    namespacestr = arg.Substring(11).Trim();
-                if (arg.StartsWith("-query:"))
-                    querystr = arg.Substring(7).Trim();
-                if (arg.StartsWith("-type:"))
-                    typestr = arg.Substring(6).Trim();
-                if (arg.StartsWith("-from:"))
-                    fromstr = arg.Substring(6).Trim();
-                if (arg.StartsWith("-to:"))
-                    tostr = arg.Substring(4).Trim();
-                if (arg.StartsWith("-days:"))
-                    daysstr = arg.Substring(6).Trim();
-                if (arg.StartsWith("-hours:"))
-                    hoursstr = arg.Substring(7).Trim();
-                if (arg.StartsWith("-fullcheck"))
-                    fullcheck = true;
-            }
-           
-            int ns;
-            int querysize;
-            int days, hours;
-            if (!int.TryParse(namespacestr, out ns))
-                ns = 0;
-            if (!int.TryParse(querystr, out querysize))
-                querysize = 100;
-            if (!int.TryParse(daysstr, out days))
-                days = 0;
-            if (!int.TryParse(hoursstr, out hours))
-                hours = 0;
-            hours += days*24;
-            if (hours <= 0)
-                hours = -1;
+            InputParameters inputParameters = new InputParameters();
+            var res = inputParameters.ParseParameters(args);
+            if (!res)
+                return;
 
-            Console.WriteLine("Language: " + langcode);
-            Console.WriteLine("Category: " + catname);
-            Console.WriteLine("Namespace: " + ns);
-            Console.WriteLine("Query: " + querystr);
-
-            var botConfigugation = new BotConfiguration();
-            var res = botConfigugation.ReadConfiguration(botconfig);
-            botConfigugation.ReadNamespaceConformity();
+            var botConfiguration = new BotConfiguration();
+            res = botConfiguration.ReadConfiguration(inputParameters.Botconfig);
+            botConfiguration.ReadNamespaceConformity();
             if (!res)
             {
                 Console.WriteLine("Incorrect configuration file");
@@ -78,20 +25,33 @@ namespace SharpInterwiki
 
             try
             {
-                var mlpl = new MultilingualPageList(botConfigugation);
+                var mlpl = new MultilingualPageList(botConfiguration, inputParameters);
+                var mopl = new MovedPageList(botConfiguration, inputParameters);
 
-                if (typestr == "new")
-                    mlpl.ProcessNewPages(langcode, ns, hours, querysize, fullcheck);
-                if (typestr == "range")
-                    mlpl.ProcessRangePages(langcode, ns, fromstr, tostr, querysize, fullcheck);
-                if (typestr == "page")
-                    mlpl.ProcessPage(langcode, ns, fromstr, fullcheck);
+                if (inputParameters.Type == "new")
+                    mlpl.ProcessNewPages(inputParameters);
+                if (inputParameters.Type == "range")
+                    mlpl.ProcessRangePages(inputParameters);
+                if (inputParameters.Type == "page")
+                    mlpl.ProcessPage(inputParameters);
+                if (inputParameters.Type == "cat" || inputParameters.Type == "category")
+                    mlpl.ProcessCategoryPages(inputParameters);
+                if (inputParameters.Type == "user" || inputParameters.Type == "usercontribs")
+                    mlpl.ProcessUserContributions(inputParameters);
+                if (inputParameters.Type == "movecat")
+                    mopl.FindMovedCategories(inputParameters);
+                if (inputParameters.Type == "movecatrange")
+                    mopl.ProcessCategoryRedirectRange2(inputParameters);
+                if (inputParameters.Type == "moverange")
+                    mopl.ProcessRedirectRange(inputParameters);
+                if (inputParameters.Type == "move")
+                    mopl.ProcessMovedPages(inputParameters);
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-
-        }       
+        }
     }
 }
